@@ -67,6 +67,12 @@ class ConfiguraTela:
     def confirma_voto(self):
         self.__urna.append(self.__entrada.get())
         print(self.__urna)
+
+        self.song = self.song_box.get(ACTIVE)
+        self.song = f'C:/Users/Gabriel/Downloads/MP3/{self.song}.mp3'
+
+        pygame.mixer.music.load(self.song)
+        pygame.mixer.music.play(loops=0)
          
         if self.__entrada.get() == '1': # Condição que mostram 
             self.__cont1 += 1 #Contador de votos para o candidato 1
@@ -149,7 +155,6 @@ class ConfiguraTela:
             self.img2 = PhotoImage(file='Candidata_Clarice.png')
             self.img_cand2 = Label(self.root, image=self.img2)
             self.img_cand2.place(relx = 0.02, rely = 0.3, relwidth = 0.5, relheight = 0.68)
-
 
 ##### Programa Principal #####
 root = Tk()
