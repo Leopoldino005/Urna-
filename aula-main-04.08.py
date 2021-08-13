@@ -102,6 +102,10 @@ class ConfiguraTela:
         self.btn_nulo.place(relx=0.55, rely=0.5, relwidth=0.40, relheight=0.1)
 
     def confirma_voto(self):        #Método de confirmar o voto
+        if self.__entrada.get() != '1' and self.__entrada.get() != '2':
+            self.__entrada.delete(0, END)
+            messagebox.askokcancel('Erro', 'O número digitado não corresponde à algum candidato')
+
         if self.__entrada.get() == '1': # Condição que mostram
             self.__urna.append(self.__entrada.get())        #Atribui a entrada do voto 'self.entrada' para 'self.__urna'
             print(self.__urna)
@@ -144,12 +148,8 @@ class ConfiguraTela:
 
             messagebox.showinfo('Confirma', 'Voto Confirmado com Sucesso')
 
-        else:
-            self.__entrada.delete(0, END)
-            messagebox.askokcancel('Erro', 'O número digitado não corresponde à algum candidato')
-
     def cancela(self):
-        messagebox.showerror('Cancela', 'Voto Cancelado')
+        messagebox.showerror('Cancela', 'Voto Cancelado\nVote novamente')
 
         self.janela_principal = Frame(self.root, bg = 'black') 
         self.janela_principal.place(relx = 0.02, rely = 0.3, relwidth = 0.5, relheight = 0.68)
